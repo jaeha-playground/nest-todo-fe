@@ -3,7 +3,7 @@ import Image from 'next/image';
 import home from 'public/home.svg';
 import wordmark from 'public/wordmark.svg';
 
-import * as A from '@/styles/auth.styles';
+import * as A from './index.styles';
 
 export default function Navbar() {
   return (

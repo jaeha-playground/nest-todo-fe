@@ -1,7 +1,8 @@
 import './globals.css';
 import { Global } from '@emotion/react';
 import GlobalStyle from '@/styles/reset';
-import Providers from '@/components/Providers';
+import ThemeProviders from '@/components/Providers/ThemeProviders';
+import ExtraProviders from '@/components/Providers/ExtraProviders';
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,9 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>
+      <body suppressHydrationWarning={true}>
         <GlobalStyle />
-        <Providers>{children}</Providers>
+        <ExtraProviders>
+          <ThemeProviders>{children}</ThemeProviders>
+        </ExtraProviders>
       </body>
     </html>
   );
