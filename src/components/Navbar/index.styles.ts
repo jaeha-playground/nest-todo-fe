@@ -13,5 +13,6 @@ export const Container = styled.div`
   align-items: center;
   padding: 16px 20px;
 
-  background-color: redColor;
+  /* background-color: ${({ theme }) => theme.backgroundColor}; */
+  backdrop-filter: ${({ theme }) => theme.backdropFilter};
 `;
