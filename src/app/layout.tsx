@@ -1,6 +1,7 @@
 import './globals.css';
 import { Global } from '@emotion/react';
 import GlobalStyle from '@/styles/reset';
+import Providers from '@/components/Providers';
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,8 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <GlobalStyle />
-      <body>{children}</body>
+      <body>
+        <GlobalStyle />
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
