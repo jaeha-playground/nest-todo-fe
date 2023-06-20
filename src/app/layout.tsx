@@ -1,7 +1,6 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import { Global } from '@emotion/react';
+import GlobalStyle from '@/styles/reset';
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <GlobalStyle />
+      <body>{children}</body>
     </html>
   );
 }
