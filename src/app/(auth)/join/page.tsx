@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useReducer } from 'react';
+import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 
 import { Button, TextField } from '@mui/material';
@@ -38,6 +39,7 @@ const reducer = (state: State, action: Action): State => {
 };
 
 export default function page() {
+  const router = useRouter();
   const [state, dispatch] = useReducer(reducer, {
     email: '',
     nickname: '',
@@ -55,6 +57,8 @@ export default function page() {
   };
   const onSuccess = (data: any) => {
     console.log('success>>', data);
+    alert('회원가입 성공. 로그인 페이지로 이동합니다.');
+    router.push('/login');
   };
 
   const { mutate, isPending } = useJoinAPI({ onSuccess, onError });

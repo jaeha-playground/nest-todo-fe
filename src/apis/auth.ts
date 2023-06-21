@@ -13,6 +13,11 @@ interface IJoin {
   password: string;
 }
 
+interface ILogin {
+  email: string;
+  password: string;
+}
+
 export const useJoinAPI = (
   options?: UseMutationOptions<AxiosResponse<string>, AxiosError, IJoin>
 ) => {
@@ -20,6 +25,15 @@ export const useJoinAPI = (
   const mutationFn = (data: IJoin) =>
     axiosInstance.post(queryKey, data).then((res) => res.data);
 
-  // return useMutation({queryKey: [queryKey], queryFn: queryFn, {...options} })
+  return useMutation({ mutationFn, ...options });
+};
+
+export const useLoginAPI = (
+  options?: UseMutationOptions<AxiosResponse<string>, AxiosError, ILogin>
+) => {
+  const queryKey = `/users/login`;
+  const mutationFn = (data: ILogin) =>
+    axiosInstance.post(queryKey, data).then((res) => res.data);
+
   return useMutation({ mutationFn, ...options });
 };
