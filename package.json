@@ -14,6 +14,9 @@
     "@mui/lab": "^5.0.0-alpha.134",
     "@mui/material": "^5.13.5",
     "@tanstack/react-query": "^5.0.0-alpha.68",
+    "@tiptap/pm": "^2.0.3",
+    "@tiptap/react": "^2.0.3",
+    "@tiptap/starter-kit": "^2.0.3",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
@@ -29,6 +32,7 @@
     "typescript": "5.1.3"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.0.0-alpha.68"
+    "@tanstack/eslint-plugin-query": "^5.0.0-alpha.68",
+    "@types/editorjs__header": "^2.6.0"
   }
 }
