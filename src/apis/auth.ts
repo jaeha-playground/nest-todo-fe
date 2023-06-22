@@ -1,5 +1,6 @@
 import {
   UseMutationOptions,
+  UseQueryOptions,
   useMutation,
   useQuery,
   useQueryClient,
@@ -36,4 +37,18 @@ export const useLoginAPI = (
     axiosInstance.post(queryKey, data).then((res) => res.data);
 
   return useMutation({ mutationFn, ...options });
+};
+
+export const useMeAPI = (
+  options?: UseQueryOptions<
+    AxiosResponse<unknown>,
+    AxiosError,
+    string,
+    string[]
+  >
+) => {
+  const queryKey = `/users`;
+  const queryFn = () => axiosInstance.get(queryKey).then((res) => res.data);
+
+  return useQuery({ queryKey: [queryKey], queryFn });
 };
