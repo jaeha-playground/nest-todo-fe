@@ -6,6 +6,8 @@ import { Color } from '@tiptap/extension-color';
 import TextStyle from '@tiptap/extension-text-style';
 import ListItem from '@tiptap/extension-list-item';
 
+import * as S from './index.styles';
+
 export default function Editor() {
   const MenuBar = ({ editor }: { editor: any }) => {
     if (!editor) {
@@ -151,13 +153,15 @@ export default function Editor() {
         },
       }),
     ],
-    content: ``,
+    content: '',
   });
 
   return (
-    <div>
+    <S.Container>
       <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
-    </div>
+      <S.EditorWrapper>
+        <EditorContent editor={editor} />
+      </S.EditorWrapper>
+    </S.Container>
   );
 }
