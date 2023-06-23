@@ -17,6 +17,10 @@ export default function page() {
 
   return (
     <div>
+      <h1>Home 화면</h1>
+      <Link href={'/todos'}>
+        <Button variant="outlined">글 전체보기</Button>
+      </Link>
       <Link href={'todos/create'}>
         <Button variant="outlined">글 작성하러 가기</Button>
       </Link>
