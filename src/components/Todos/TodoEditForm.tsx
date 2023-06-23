@@ -1,7 +1,5 @@
-'use client';
-
-import React, { useState } from 'react';
-import Link from 'next/link';
+import { useUpdateTodoAPI } from '@/apis/todo';
+import { TextareaAutosize } from '@mui/base';
 import {
   Button,
   InputLabel,
@@ -9,26 +7,31 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import Editor from '@/components/Editor';
-import { useCreateTodoAPI } from '@/apis/todo';
+interface ITodoEditForm {
+  data: any;
+}
 
-export default function page() {
-  const [contentsTitle, setContentsTitle] = useState<string>('');
-  const [contentsBody, setContentsBody] = useState<string>('');
-  const [contentsStatus, setContentsStatus] = useState<string>('TODO');
+export default function TodoEditForm({ data }: ITodoEditForm) {
+  const router = useRouter();
+  const [contentsTitle, setContentsTitle] = useState<string>(data.title);
+  const [contentsBody, setContentsBody] = useState<string>(data.body);
+  const [contentsStatus, setContentsStatus] = useState<string>(data.status);
+  console.log(contentsTitle, contentsBody, contentsStatus);
 
   const onSuccess = (data: any) => {
-    alert('create 성공');
+    alert('업데이트 완료');
     console.log('data>>', data);
+    router.push(`/todos/${data.id}`);
   };
   const onError = (err: Error) => {
-    alert('create 실패');
+    alert('업데이트 실패');
     console.error(err);
   };
 
-  const { mutate } = useCreateTodoAPI({ onSuccess, onError });
+  const { mutate } = useUpdateTodoAPI(data.id, { onSuccess, onError });
 
   const handleSubmitPost = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,12 +51,7 @@ export default function page() {
 
   return (
     <div>
-      <h1>글 작성</h1>
-      <Link href={'/todos'}>
-        <Button variant="outlined">글 작성 취소</Button>
-      </Link>
       <form onSubmit={handleSubmitPost}>
-        {/* <Editor /> */}
         {/* title */}
         <input
           type="text"
@@ -79,7 +77,7 @@ export default function page() {
           <MenuItem value="DONE">완료</MenuItem>
         </Select>
         <Button variant="outlined" type="submit">
-          작성 완료
+          편집 완료
         </Button>
       </form>
     </div>

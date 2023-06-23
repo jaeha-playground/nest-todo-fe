@@ -33,3 +33,14 @@ export const useGetSpecificTodoAPI = (
 
   return useQuery({ queryKey: [queryKey], queryFn });
 };
+
+export const useUpdateTodoAPI = (
+  id: number,
+  options?: UseMutationOptions<AxiosResponse<string>, AxiosError, any>
+) => {
+  const queryKey = `/todos/update/${id}`;
+  const mutationFn = (data: any) =>
+    axiosInstance.put(queryKey, data).then((res) => res.data);
+
+  return useMutation({ mutationFn, ...options });
+};
