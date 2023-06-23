@@ -44,3 +44,14 @@ export const useUpdateTodoAPI = (
 
   return useMutation({ mutationFn, ...options });
 };
+
+export const useDeleteTodoAPI = (
+  id: number,
+  options?: UseMutationOptions<AxiosResponse<string>, AxiosError, any>
+) => {
+  const queryKey = `/todos/delete/${id}`;
+  const mutationFn = (data: any) =>
+    axiosInstance.delete(queryKey).then((res) => res.data);
+
+  return useMutation({ mutationFn, ...options });
+};
