@@ -7,13 +7,7 @@ import React from 'react';
 export default function page() {
   return (
     <div>
-      <Link href={'/todos'}>
-        <Button variant="outlined">글 전체보기</Button>
-      </Link>
-      <Link href={'/todos/create'}>
-        <Button variant="outlined">글 작성하기</Button>
-      </Link>
-      todos
+      <h1>글 편집하기 페이지</h1>
     </div>
   );
 }

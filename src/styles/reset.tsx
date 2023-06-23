@@ -5,6 +5,19 @@ import { Global, css } from '@emotion/react';
 const GlobalStyle = () => (
   <Global
     styles={css`
+      a:link {
+        color: red;
+        text-decoration: none;
+      }
+      a:visited {
+        color: black;
+        text-decoration: none;
+      }
+      a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+
       .ProseMirror {
         > * + * {
           margin-top: 0.75em;
